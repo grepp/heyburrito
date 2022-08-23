@@ -8,6 +8,8 @@ services:
     volumes:
       - /data/mongodb:/data/db/
   heyburrito:
+    env_file:
+      - .env
     image: chralp/heyburrito:latest
     ports:
       - "3333:3333"
