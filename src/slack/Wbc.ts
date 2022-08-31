@@ -35,20 +35,14 @@ class Wbc {
     }
 
     async sendDM(username: string, text: string) {
-        log.info('[DEBUG]: post message')
         const res = await this.wbc.chat.postMessage({
             text,
             channel: username,
             username: config.slack.bot_name,
             icon_emoji: ':cookie:',
         });
-        log.info(res);
         if (res.ok) {
             log.info(`Notified user ${username}`);
-        }
-        else {
-            // TODO: handle error
-            log.info(res)
         }
     }
 }
