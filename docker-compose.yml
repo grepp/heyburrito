@@ -10,7 +10,9 @@ services:
   heyburrito:
     env_file:
       - .env
-    image: chralp/heyburrito:latest
+    build:
+      #dockerfile의 위치를 지정 합니다.
+      context: .
     ports:
       - "3333:3333"
       - "3334:3334"
