@@ -98,7 +98,13 @@ const start = () => {
                 if (result) {
                     const { giver, updates } = result;
                     if (updates.length) {
-                        await handleBurritos(giver, updates);
+                        try{
+                            await handleBurritos(giver, updates);
+                        }
+                        catch(error){
+                            // TODO: handle error
+                            console.log(error);
+                        }
                     }
                 }
             }
