@@ -44,6 +44,10 @@ class Wbc {
         if (res.ok) {
             log.info(`Notified user ${username}`);
         }
+        else {
+            // TODO: handle error
+            console.log(res)
+        }
     }
 }
 
