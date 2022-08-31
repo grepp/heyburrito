@@ -64,14 +64,17 @@ const handleBurritos = async (giver: string, updates: Updates[]) => {
         const givenBurritos = await BurritoStore.givenToday(giver, 'from', 'inc');
         const givenRottenBurritos = await BurritoStore.givenToday(giver, 'from', 'dec');
         const incUpdates = updates.filter((x) => x.type === 'inc');
+        const usernameSet = new Set(incUpdates.map(update => update.username));
+        const uniqueUserNames = Array.from(usernameSet);
         const decUpdates = updates.filter((x) => x.type === 'dec');
         const diffInc = dailyCap - givenBurritos;
         const diffDec = dailyDecCap - givenRottenBurritos;
         if (incUpdates.length) {
             if (incUpdates.length > diffInc) {
-                notifyUser(giver, `You are trying to give away ${updates.length} burritos, but you only have ${diffInc} burritos left today!`);
+                notifyUser(giver, `You are trying to give away ${updates.length} cookies, but you only have ${diffInc} cookies left today!`);
             } else {
                 await giveBurritos(giver, incUpdates);
+                await notifyUser(giver, `You gave ${incUpdates.length} cookies to ${uniqueUserNames.map(username => `<@${username}>`).join(', ')}. You have ${diffInc} cookies left to give out today.`)
             }
         }
         if (decUpdates.length) {
