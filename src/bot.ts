@@ -74,6 +74,7 @@ const handleBurritos = async (giver: string, updates: Updates[]) => {
             if (incUpdates.length > diffInc) {
                 notifyUser(giver, `You are trying to give away ${updates.length} cookies, but you only have ${diffInc} cookies left today!`);
             } else {
+                log.info('[DEBUG]: give burrito...')
                 await giveBurritos(giver, incUpdates);
                 log.info('[DEBUG]: successfully sent cookie. now send message...')
                 await notifyUser(giver, `You gave ${incUpdates.length} cookies to ${uniqueUserNames.map(username => `<@${username}>`).join(', ')}. You have ${diffInc} cookies left to give out today.`)
