@@ -75,7 +75,7 @@ const handleBurritos = async (giver: string, updates: Updates[]) => {
                 notifyUser(giver, `You are trying to give away ${updates.length} cookies, but you only have ${diffInc} cookies left today!`);
             } else {
                 await giveBurritos(giver, incUpdates);
-                await notifyUser(giver, `You gave ${incUpdates.length} cookies to ${uniqueUserNames.map(username => `<@${username}>`).join(', ')}. You have ${diffInc} cookies left to give out today.`)
+                await notifyUser(giver, `You gave ${incUpdates.length} cookies to ${uniqueUserNames.map(username => `<@${username}>`).join(', ')}. You have ${diffInc - incUpdates.length} cookies left to give out today.`)
             }
         }
         if (decUpdates.length) {
