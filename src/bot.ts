@@ -76,6 +76,9 @@ const handleBurritos = async (giver: string, updates: Updates[]) => {
             } else {
                 await giveBurritos(giver, incUpdates);
                 await notifyUser(giver, `You gave ${incUpdates.length} cookies to ${uniqueUserNames.map(username => `<@${username}>`).join(', ')}. You have ${diffInc - incUpdates.length} cookies left to give out today.`)
+                for await (let username of uniqueUserNames) {
+                    await notifyUser(username, `You received ${incUpdates.filter(update => update.username === username).length} cookie from <@${giver}>`)
+                }
             }
         }
         if (decUpdates.length) {
