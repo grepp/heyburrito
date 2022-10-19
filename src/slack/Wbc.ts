@@ -26,7 +26,7 @@ class Wbc {
             const arr = x.is_bot ? bots : users;
             arr.push({
                 id: x.id,
-                name: x.is_bot ? x.name : x.real_name,
+                name: x.name,
                 memberType: x.is_restricted ? 'guest' : 'member',
                 avatar: x.profile.image_48,
             });
