@@ -128,6 +128,7 @@ class MongoDBDriver {
      * Should be able to return burrito List ( scoreType inc ) and
      * listtype ( dec ) AKA rottenburritoList
      */
+    // TODO: 기간을 설정할 수 있도록 parameter 수정 및 match 로직 수정
     async getScoreBoard({ user, listType, today }) {
         let match: any = {};
 

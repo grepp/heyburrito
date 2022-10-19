@@ -36,6 +36,7 @@ class Wbc {
 
     async sendDM(username: string, text: string) {
         const res = await this.wbc.chat.postMessage({
+            as_user: true,
             text,
             channel: username,
             username: config.slack.bot_name,
