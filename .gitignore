@@ -22,5 +22,4 @@ doc
 tmp
 data/*
 
-.env
 .tern*
